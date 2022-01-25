@@ -27,4 +27,15 @@ class FrameShould extends AnyFunSuite {
     assert(frame.firstScore.get == Roll(2))
     assert(frame.secondScore.isInstanceOf[Option[Spare]])
   }
+
+  test("store foul") {
+    val frame = Frame().setFirstRollScore(Foul()).setSecondRollScore(Roll(5))
+    assert(frame.firstScore.isInstanceOf[Option[Foul]])
+    assert(frame.secondScore.get == Roll(5))
+  }
+
+  test("store miss") {
+    val frame = Frame().setFirstRollScore(Miss())
+    assert(frame.firstScore.isInstanceOf[Option[Foul]])
+  }
 }

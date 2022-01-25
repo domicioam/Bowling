@@ -1,3 +1,1 @@
-class Player {
-
-}
+case class Player(name: String)
